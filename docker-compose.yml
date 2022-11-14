@@ -1,0 +1,153 @@
+version: "3.9"  # optional since v1.27.0
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - '5439:5439'
+    networks:
+      - local-keycloak
+    volumes:
+      - db:/var/lib/postgresql/data
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+    networks:
+      - local-keycloak
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=rootuser
+      - MONGO_INITDB_ROOT_PASSWORD=rootpass
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    depends_on:
+      - mongodb
+    ports:
+      - '8081:8081'
+    networks:
+      - local-keycloak
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=rootuser
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+    restart: always
+  eureka-service:
+    build: ./eureka-server
+    image: eureka-service:1
+    container_name: eureka-service
+    networks:
+      - local-keycloak
+    mem_limit: 512m
+    ports:
+      - '8761:8761'
+  config-service:
+    image: config-service:1
+    container_name: config-service
+    build:
+      context: ./config-service
+      dockerfile: ./Dockerfile
+    environment:
+      EUREKA_URL: http://eureka-service:8761/eureka
+    networks:
+      - local-keycloak
+    ports:
+      - '8888:8888'
+    restart: always
+  api-gateway:
+    build: ./api-gateway
+    depends_on:
+      - eureka-service
+      - keycloak
+    image: api-gateway:1
+    container_name: api-gateway
+    mem_limit: 512m
+    ports:
+      - '9090:9090'
+    networks:
+      - local-keycloak
+    environment:
+      EUREKA_URL: http://eureka-service:8761/eureka
+      KEYCLOAK_URL: http://keycloak:8082/
+    restart: always
+  keycloak:
+    depends_on:
+      - postgres
+    container_name: keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_PASSWORD: 1234
+      KC_DB_USERNAME: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+    image: quay.io/keycloak/keycloak:18.0.0
+    command:
+      - start-dev
+      - --import-realm
+    volumes:
+      - ./keycloak/realms/digital-media-realm.json:/opt/keycloak/data/import/realm.json
+    ports:
+      - '8082:8080'
+    restart: unless-stopped
+    networks:
+      - local-keycloak
+  bills-service:
+    build: ./ms-bills
+    depends_on:
+      - eureka-service
+    image: ms-bill:1
+    container_name: bills-service
+    mem_limit: 512m
+    ports:
+      - '8085:8085'
+    networks:
+      - local-keycloak
+    environment:
+      EUREKA_URL: http://eureka-service:8761/eureka
+      KEYCLOAK_URL: http://keycloak:8082/
+  users-service:
+    build: ./users-service
+    depends_on:
+      - mongodb
+      - eureka-service
+    image: users-service:1
+    container_name: users-service
+    mem_limit: 512m
+    ports:
+      - '8086:8086'
+    networks:
+      - local-keycloak
+    environment:
+      DB_URL: mongodb://mongodb:27017/moviesdb
+      EUREKA_URL: http://eureka-service:8761/eureka
+      KEYCLOAK_URL: http://keycloak:8082/
+  movies-service:
+    build: ./movies-api
+    depends_on:
+      - mongodb
+      - eureka-service
+    image: movies-service:1
+    container_name: movies-service
+    mem_limit: 512m
+    ports:
+      - '8087:8087'
+    networks:
+      - local-keycloak
+    environment:
+      DB_URL: mongodb://mongodb:27017/moviesdb
+      EUREKA_URL: http://eureka-service:8761/eureka
+      KEYCLOAK_URL: http://keycloak:8082/
+
+networks:
+  local-keycloak:
+
+volumes:
+  db:

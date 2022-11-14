@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.digitalhouse.serverconfig.ServerConfigApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.127 s - in com.digitalhouse.serverconfig.ServerConfigApplicationTests

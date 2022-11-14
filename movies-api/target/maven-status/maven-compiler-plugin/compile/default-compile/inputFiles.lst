@@ -1,0 +1,16 @@
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\repository\MovieRepository.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\exception\MovieNotFoundException.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\model\dto\MovieDto.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\config\SwaggerConfig.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\security\KeyCloakJwtAuthenticationConverter.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\security\OAuth2ResourceServerSecurityConfiguration.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\model\dto\UpdateMovieRequest.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\MoviesApiApplication.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\controller\MoviesController.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\config\ErrorAttributesConfig.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\mapper\MovieMapper.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\service\MovieServiceImpl.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\model\dto\AddCommentRequest.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\model\dto\CreateMovieRequest.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\service\MovieService.java
+D:\Certified Tech Developer\ESPECIALIZACIÓN BACK END\2DO.BIMESTRE\BACK END II\REPO\TI-BEII\Fernández_María_Laura\movies-api\src\main\java\com\digitalmedia\movies\model\Movie.java

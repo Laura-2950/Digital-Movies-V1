@@ -1,0 +1,65 @@
+server:
+  port: ${PORT:8085}
+
+springdoc:
+  show-actuator: true
+  swagger-ui:
+    groups-order: DESC
+    disable-swagger-default-url: true
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+app:
+  cors:
+    allowed-origins: http://localhost:3000
+spring:
+  application:
+    name: bills-service
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: false
+        service-id: config-service
+  main:
+    allow-circular-references: true
+  security:
+    oauth2:
+      client:
+        provider:
+          bills-service-microservicios:
+            issuer-uri: ${KEYCLOAK_URL:http://keycloak:8082/}realms/digital_media
+            token-uri: ${KEYCLOAK_URL:http://keycloak:8082/}realms/digital-house/protocol/openid-connect/token
+        registration:
+          bills-service-microservicios:
+            client-id: microservicios
+            client-secret: bsFPyChwi3sfCl5Mm00SGckDCKnq3KnQ
+            authorization-grant-type: client_credentials
+
+  datasource:
+    url: jdbc:h2:mem:moviesdb;DB_CLOSE_DELAY=-1
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+  enabled: true
+

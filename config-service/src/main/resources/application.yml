@@ -1,0 +1,21 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Laura-2950/spring-cloud-config/
+          searchPaths: digital_media_config
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+
+info:
+  app:
+    name: ${spring.application.name}
+    version: 1.0.0
+    description: Config Microservice

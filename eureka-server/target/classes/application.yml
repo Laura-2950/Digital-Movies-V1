@@ -1,0 +1,29 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-service
+
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+  endpoint:
+    info:
+      enabled: true
+
+info:
+  app:
+    name: ${spring.application.name}
+    version: 1.0.0
+    description: Eureka Microservice
