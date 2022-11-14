@@ -31,12 +31,15 @@ spring:
         provider:
           bills-service-microservicios:
             issuer-uri: ${KEYCLOAK_URL:http://keycloak:8082/}realms/digital_media
-            token-uri: ${KEYCLOAK_URL:http://keycloak:8082/}realms/digital-house/protocol/openid-connect/token
+            token-uri: ${KEYCLOAK_URL:http://keycloak:8082/}realms/digital_media/protocol/openid-connect/token
         registration:
           bills-service-microservicios:
+            provider: bills-service-microservicios
             client-id: microservicios
             client-secret: bsFPyChwi3sfCl5Mm00SGckDCKnq3KnQ
             authorization-grant-type: client_credentials
+            scope: openid
+            redirect-uri: http://localhost:8080/*
 
   datasource:
     url: jdbc:h2:mem:moviesdb;DB_CLOSE_DELAY=-1

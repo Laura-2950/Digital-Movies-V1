@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.client.*;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 
+
 @Configuration
 public class OAuthFeignConfig {
 
@@ -16,7 +17,7 @@ public class OAuthFeignConfig {
   private final OAuth2AuthorizedClientService oAuth2AuthorizedClientService;
   private final ClientRegistrationRepository clientRegistrationRepository;
 
-  @Autowired
+
   public OAuthFeignConfig(OAuth2AuthorizedClientService oAuth2AuthorizedClientService,
                           ClientRegistrationRepository clientRegistrationRepository) {
     this.oAuth2AuthorizedClientService = oAuth2AuthorizedClientService;
